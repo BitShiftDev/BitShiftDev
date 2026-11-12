@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-labelledby="title desc">
+  <title id="title">BitShiftDev</title>
+  <desc id="desc">Terminal-Banner für das GitHub-Profil von BitShiftDev mit einem animierten 8-Bit-Register, in dem ein Bit nach links geschoben wird.</desc>
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#a371f7"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="490" y2="0">
+      <stop offset="0" stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#a371f7"/>
+    </linearGradient>
+    <linearGradient id="fadeRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d1117" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#0d1117" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0d1117" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="card">
+      <rect x="20" y="20" width="1160" height="280" rx="16"/>
+    </clipPath>
+
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+      .bits { font-size: 14px; fill: #58a6ff; opacity: 0.07; }
+      .row-l { animation: shl 40s linear infinite; }
+      .row-r { animation: shr 52s linear infinite; }
+      .slow  { animation-duration: 64s; }
+      @keyframes shl { from { transform: translateX(0); } to { transform: translateX(-1200px); } }
+      @keyframes shr { from { transform: translateX(-1200px); } to { transform: translateX(0); } }
+
+      .cursor { animation: blink 1.1s step-end infinite; }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+      .bit { animation: shift 4s steps(8) infinite; }
+      @keyframes shift { from { transform: translateX(0); } to { transform: translateX(-448px); } }
+
+      .v { opacity: 0; animation: show 4s step-end infinite; }
+      @keyframes show { 0% { opacity: 1; } 12.5% { opacity: 0; } 100% { opacity: 0; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; }
+        .v0 { opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Karte -->
+  <rect x="20" y="20" width="1160" height="280" rx="16" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+
+  <g clip-path="url(#card)">
+    <!-- Hintergrund: "BitShiftDev " als ASCII-Binärcode, wird endlos geshiftet -->
+    <g class="mono bits" xml:space="preserve">
+      <g class="row-l"><text id="r0" x="0" y="100" textLength="1200" lengthAdjust="spacing">01000010 01101001 01110100 01010011 01101000 01101001 01100110 01110100 01000100 01100101 01110110 00100000 </text><use href="#r0" x="1200"/></g>
+      <g class="row-r"><text id="r1" x="0" y="130" textLength="1200" lengthAdjust="spacing">01101001 01100110 01110100 01000100 01100101 01110110 00100000 01000010 01101001 01110100 01010011 01101000 </text><use href="#r1" x="1200"/></g>
+      <g class="row-l slow"><text id="r2" x="0" y="160" textLength="1200" lengthAdjust="spacing">01110110 00100000 01000010 01101001 01110100 01010011 01101000 01101001 01100110 01110100 01000100 01100101 </text><use href="#r2" x="1200"/></g>
+      <g class="row-r"><text id="r3" x="0" y="190" textLength="1200" lengthAdjust="spacing">01010011 01101000 01101001 01100110 01110100 01000100 01100101 01110110 00100000 01000010 01101001 01110100 </text><use href="#r3" x="1200"/></g>
+      <g class="row-l"><text id="r4" x="0" y="220" textLength="1200" lengthAdjust="spacing">01000100 01100101 01110110 00100000 01000010 01101001 01110100 01010011 01101000 01101001 01100110 01110100 </text><use href="#r4" x="1200"/></g>
+      <g class="row-r slow"><text id="r5" x="0" y="250" textLength="1200" lengthAdjust="spacing">01101001 01110100 01010011 01101000 01101001 01100110 01110100 01000100 01100101 01110110 00100000 01000010 </text><use href="#r5" x="1200"/></g>
+      <g class="row-l"><text id="r6" x="0" y="280" textLength="1200" lengthAdjust="spacing">01100110 01110100 01000100 01100101 01110110 00100000 01000010 01101001 01110100 01010011 01101000 01101001 </text><use href="#r6" x="1200"/></g>
+    </g>
+
+    <!-- Abdunkelung links, damit der Text gut lesbar bleibt -->
+    <rect x="20" y="72" width="700" height="228" fill="url(#fadeRight)"/>
+
+    <!-- Titelleiste -->
+    <rect x="20" y="20" width="1160" height="52" fill="#161b22"/>
+    <line x1="20" y1="72" x2="1180" y2="72" stroke="url(#accent)" stroke-width="2" opacity="0.8"/>
+  </g>
+
+  <circle cx="50" cy="46" r="7" fill="#ff5f56"/>
+  <circle cx="74" cy="46" r="7" fill="#ffbd2e"/>
+  <circle cx="98" cy="46" r="7" fill="#27c93f"/>
+  <text class="mono" x="600" y="51" text-anchor="middle" font-size="15" fill="#8b949e">~/BitShiftDev — zsh</text>
+
+  <!-- Linke Seite: Terminal-Text -->
+  <text class="mono" x="60" y="125" font-size="20" fill="#8b949e"><tspan fill="#3fb950">$</tspan> whoami</text>
+  <text class="mono" x="60" y="195" font-size="64" font-weight="700" fill="#e6edf3">BitShift<tspan fill="url(#titleGrad)">Dev</tspan></text>
+  <text class="mono" x="60" y="245" font-size="20" fill="#c9d1d9"><tspan fill="#a371f7">&gt;</tspan> shifting bits, building things<tspan class="cursor" fill="#58a6ff"> ▋</tspan></text>
+
+  <!-- Rechte Seite: 8-Bit-Register -->
+  <g class="mono" font-size="13" fill="#6e7681" text-anchor="middle">
+    <text x="725" y="138">7</text><text x="781" y="138">6</text><text x="837" y="138">5</text><text x="893" y="138">4</text>
+    <text x="949" y="138">3</text><text x="1005" y="138">2</text><text x="1061" y="138">1</text><text x="1117" y="138">0</text>
+  </g>
+
+  <g fill="#161b22" stroke="#30363d" stroke-width="1.5">
+    <rect x="700" y="148" width="50" height="58" rx="8"/><rect x="756" y="148" width="50" height="58" rx="8"/>
+    <rect x="812" y="148" width="50" height="58" rx="8"/><rect x="868" y="148" width="50" height="58" rx="8"/>
+    <rect x="924" y="148" width="50" height="58" rx="8"/><rect x="980" y="148" width="50" height="58" rx="8"/>
+    <rect x="1036" y="148" width="50" height="58" rx="8"/><rect x="1092" y="148" width="50" height="58" rx="8"/>
+  </g>
+  <g class="mono" font-size="26" fill="#484f58" text-anchor="middle">
+    <text x="725" y="186">0</text><text x="781" y="186">0</text><text x="837" y="186">0</text><text x="893" y="186">0</text>
+    <text x="949" y="186">0</text><text x="1005" y="186">0</text><text x="1061" y="186">0</text><text x="1117" y="186">0</text>
+  </g>
+
+  <!-- Das wandernde Bit -->
+  <g class="bit">
+    <rect x="1092" y="148" width="50" height="58" rx="8" fill="url(#accent)"/>
+    <text class="mono" x="1117" y="186" font-size="26" font-weight="700" fill="#0d1117" text-anchor="middle">1</text>
+  </g>
+
+  <!-- Aktueller Wert -->
+  <g class="mono" font-size="20" fill="#c9d1d9" text-anchor="middle">
+    <text class="v v0" x="921" y="250">1 &lt;&lt; 0 = <tspan fill="#58a6ff">1</tspan></text>
+    <text class="v" style="animation-delay:-3.5s" x="921" y="250">1 &lt;&lt; 1 = <tspan fill="#58a6ff">2</tspan></text>
+    <text class="v" style="animation-delay:-3s" x="921" y="250">1 &lt;&lt; 2 = <tspan fill="#58a6ff">4</tspan></text>
+    <text class="v" style="animation-delay:-2.5s" x="921" y="250">1 &lt;&lt; 3 = <tspan fill="#58a6ff">8</tspan></text>
+    <text class="v" style="animation-delay:-2s" x="921" y="250">1 &lt;&lt; 4 = <tspan fill="#58a6ff">16</tspan></text>
+    <text class="v" style="animation-delay:-1.5s" x="921" y="250">1 &lt;&lt; 5 = <tspan fill="#58a6ff">32</tspan></text>
+    <text class="v" style="animation-delay:-1s" x="921" y="250">1 &lt;&lt; 6 = <tspan fill="#58a6ff">64</tspan></text>
+    <text class="v" style="animation-delay:-0.5s" x="921" y="250">1 &lt;&lt; 7 = <tspan fill="#a371f7">128</tspan></text>
+  </g>
+</svg>
